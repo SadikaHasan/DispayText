@@ -1,7 +1,7 @@
 CFLAGS=-I ./ -Wall -Werror
-LDFLAGS=-static
+LDFLAGS=
 OBJS=main.o ssd1306.o linux_i2c.o
-BIN=displaytext
+BIN=displaytext.bin
 
 default: $(BIN)
 .PHONY: default clean
