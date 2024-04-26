@@ -8,7 +8,8 @@
 #include <sys/ioctl.h>
 
 #include "ssd1306.h"
-
+#include "linux_i2c.h"
+#include "HTU21D.h"
 
 int main(int argc, char **argv)
 {
@@ -26,6 +27,21 @@ int main(int argc, char **argv)
     
     // init oled module
     rc += ssd1306_oled_default_config(64, 128);
+
+    // Retrieve temperature and humidity
+    double temperature = 0;
+    double humidity = 0;
+    int i2cfile = get_i2c_file();
+    if ( (0 > getHumidity(i2cfile, &humidity)) || (0 > getTemperature(i2cfile, &temperature)) )
+    {
+        fprintf(stderr, "ERROR: HTU21D sensor module not found\n");
+        exit(-1);
+    }
+
+    // Print temperature and humidity on the screen
+    printf("HTU21D Sensor Module\n");
+    printf("%5.2fC\n", temperature);
+    printf("%5.2f%%rh\n", humidity);
     
     // clear display
     rc += ssd1306_oled_clear_screen();

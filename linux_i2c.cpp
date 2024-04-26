@@ -10,6 +10,11 @@
 
 static int file_i2c = 0;
 
+int get_i2c_file()
+{
+	return file_i2c;
+}
+
 uint8_t _i2c_init(int i2c, int dev_addr)
 {
 	if (file_i2c == 0)
