@@ -1,6 +1,7 @@
 CFLAGS=-I ./ -Wall -Werror
 LDFLAGS=
-OBJS=main.o ssd1306.o linux_i2c.o
+OBJS=main.o ssd1306.o linux_i2c.o HTU21D.o
+LDLIBS=-li2c
 BIN=displaytext
 
 default: $(BIN)
@@ -17,7 +18,7 @@ default: $(BIN)
 	@rm -f $*.d.tmp
 
 $(BIN):$(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) $(LDLIBS) -o $@ $(OBJS) $(LDFLAGS)
 
 clean:
 	rm -f *.o *.d $(BIN)
