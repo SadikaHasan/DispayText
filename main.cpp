@@ -28,7 +28,7 @@ void print_help()
 
 int main(int argc, char **argv)
 {
-    uint8_t i2c_node_address = 0;
+    uint8_t i2c_node_address = 1;
     int x = -1;
     int y = -1;
     char line[25] = {0};
@@ -79,9 +79,6 @@ int main(int argc, char **argv)
                 break;
             case 'm':
                 strncpy(msg, optarg, sizeof(msg));
-                break;    
-            case 'n':
-                i2c_node_address = (uint8_t)atoi(optarg);
                 break;
             case 'r':
                 orientation = atoi(optarg);
