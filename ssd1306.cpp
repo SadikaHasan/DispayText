@@ -24,7 +24,8 @@ static uint8_t global_y = 0;
 uint8_t ssd1306_init(uint8_t i2c_dev)
 {
     uint8_t rc;
-    rc = _i2c_init(i2c_dev, SSD1306_I2C_ADDR);
+    
+    rc = _i2c_init_device(SSD1306_I2C_ADDR);
     if (rc > 0)
         return rc;
         

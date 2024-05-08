@@ -1,5 +1,5 @@
-CFLAGS=-I ./ -Wall -Werror
-LDFLAGS=
+CXXFLAGS=-I ./
+LDFLAGS=-Wl,--hash-style=gnu
 OBJS=main.o ssd1306.o linux_i2c.o HTU21D.o
 LDLIBS=-li2c
 BIN=displaytext
